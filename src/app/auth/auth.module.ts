@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './containers/forgot-password/forgot-pas
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ForgotPasswordFormComponent } from './components/forgot-password-form/forgot-password-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { InputFocusDirective } from '../directives/input-focus/input-focus.directive';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     ForgotPasswordComponent,
     LoginFormComponent,
     ForgotPasswordFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    InputFocusDirective
   ],
   imports: [
     CommonModule,
