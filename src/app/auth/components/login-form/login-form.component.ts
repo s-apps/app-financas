@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class LoginFormComponent {
 
   @Input() loginForm!: FormGroup;
+  @Input() wasSent: boolean = false;
   @Output() onSubmit = new EventEmitter();
 
 }

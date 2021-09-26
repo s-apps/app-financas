@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class ForgotPasswordFormComponent {
 
   @Input() forgotPasswordForm!: FormGroup;
+  @Input() wasSent: boolean = false;
   @Output() onSubmit = new EventEmitter();
 
 }

@@ -13,10 +13,16 @@
                   <label class="small mb-1" for="name">Name</label>
                   <input
                     class="form-control py-4"
+                    [ngClass]="{ 'is-invalid': wasSent && registerForm.controls.name.errors }"
                     id="name"
                     type="text"
                     placeholder="Enter name"
                     formControlName="name">
+                    <div *ngIf="wasSent && registerForm.controls.name.errors" class="invalid-feedback">
+                      <div *ngIf="registerForm.controls.name.errors.required">
+                        Enter name
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -26,10 +32,16 @@
                   <label class="small mb-1" for="email">Email</label>
                   <input
                     class="form-control py-4"
+                    [ngClass]="{ 'is-invalid': wasSent && registerForm.controls.email.errors }"
                     id="email"
                     type="text"
                     placeholder="Enter email address"
                     formControlName="email">
+                    <div *ngIf="wasSent && registerForm.controls.email.errors" class="invalid-feedback">
+                      <div *ngIf="registerForm.controls.email.errors.required || registerForm.controls.email.errors.email">
+                        Enter email address
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -39,10 +51,19 @@
                   <label class="small mb-1" for="password">Password</label>
                   <input
                     class="form-control py-4"
+                    [ngClass]="{ 'is-invalid': wasSent && registerForm.controls.password.errors }"
                     id="password"
                     type="password"
                     placeholder="Enter password"
                     formControlName="password">
+                    <div *ngIf="wasSent && registerForm.controls.password.errors" class="invalid-feedback">
+                      <div *ngIf="registerForm.controls.password.errors.required">
+                        Enter password
+                      </div>
+                      <div *ngIf="registerForm.controls.password.errors.minlength">
+                        Password must have at least 8 characters
+                      </div>
+                    </div>
                 </div>
               </div>
               <div class="col-md-6">
@@ -50,10 +71,19 @@
                   <label class="small mb-1" for="password_confirmation">Confirm Password</label>
                   <input
                     class="form-control py-4"
+                    [ngClass]="{ 'is-invalid': wasSent && registerForm.controls.password_confirmation.errors }"
                     id="password_confirmation"
                     type="password"
                     placeholder="Confirm password"
                     formControlName="password_confirmation">
+                  <div *ngIf="wasSent && registerForm.controls.password_confirmation.errors" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls.password_confirmation.errors.required">
+                      Confirm password
+                    </div>
+                    <div *ngIf="registerForm.controls.password_confirmation.errors.passwordsMatch">
+                      Passwords do not match
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

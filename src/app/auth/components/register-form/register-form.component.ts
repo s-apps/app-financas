@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class RegisterFormComponent {
 
   @Input() registerForm!: FormGroup;
+  @Input() wasSent: boolean = false;
   @Output() onSubmit = new EventEmitter();
 
 }

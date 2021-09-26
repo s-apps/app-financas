@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   public loginForm!: FormGroup;
+  public wasSent: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder
@@ -27,6 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   public submit(){
+    this.wasSent = true;
+    if (this.loginForm.invalid) return;
     console.log(this.loginForm.value)
   }
 

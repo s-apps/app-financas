@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ForgotPasswordComponent implements OnInit {
 
   public forgotPasswordForm!: FormGroup;
+  public wasSent: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder
@@ -25,6 +26,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   public submit(){
+    this.wasSent = true;
+    if (this.forgotPasswordForm.invalid) return;
     console.log(this.forgotPasswordForm.value)
   }
 
