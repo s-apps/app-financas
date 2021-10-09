@@ -1,0 +1,6 @@
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <div *ngFor="let message of messages"> {{ message }} </div>
+  <button type="button" class="close" (click)="onClearMessages.emit()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

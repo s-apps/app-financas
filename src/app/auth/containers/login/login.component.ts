@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AuthFacade } from '../../auth.facade';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +14,8 @@ export class LoginComponent implements OnInit {
   public wasSent: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public facade: AuthFacade
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +33,7 @@ export class LoginComponent implements OnInit {
   public submit(){
     this.wasSent = true;
     if (this.loginForm.invalid) return;
-    console.log(this.loginForm.value)
+    this.facade.login(this.loginForm.value);
   }
 
 }

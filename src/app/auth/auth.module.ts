@@ -9,8 +9,9 @@ import { ForgotPasswordComponent } from './containers/forgot-password/forgot-pas
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ForgotPasswordFormComponent } from './components/forgot-password-form/forgot-password-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
-import { InputFocusDirective } from '../directives/input-focus/input-focus.directive';
-
+import { InputFocusDirective } from '../shared/directives/input-focus/input-focus.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MessagesModule } from '../shared/messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { InputFocusDirective } from '../directives/input-focus/input-focus.direc
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
+    NgbModule,
+    MessagesModule
   ]
 })
 export class AuthModule { }

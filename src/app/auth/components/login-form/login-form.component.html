@@ -2,11 +2,16 @@
   <div class="row justify-content-center">
     <div class="col-lg-5">
       <div class="card shadow-lg border-0 rounded-lg mt-5">
-        <div class="card-header">
-          <h3 class="text-center font-weight-light my-4">Login</h3>
+        <div class="card-header bg-secondary">
+          <h3 class="text-center text-white font-weight-light my-1">Login</h3>
         </div>
         <div class="card-body">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit.emit()">
+          <app-messages
+            *ngIf="messages.length"
+            [messages]="messages"
+            (onClearMessages)="onClearMessages.emit()">
+          </app-messages>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit.emit()" autocomplete="off">
             <div class="form-group">
               <label class="small mb-1" for="email">Email</label>
               <input
@@ -15,26 +20,26 @@
                 inputFocus
                 id="email"
                 type="text"
-                placeholder="Enter email address"
+                placeholder="Informe seu email"
                 formControlName="email">
                 <div *ngIf="wasSent && loginForm.controls.email.errors" class="invalid-feedback">
                   <div *ngIf="loginForm.controls.email.errors.required || loginForm.controls.email.errors.email">
-                    Enter email address
+                    Informe seu email
                   </div>
                 </div>
             </div>
             <div class="form-group">
-              <label class="small mb-1" for="password">Password</label>
+              <label class="small mb-1" for="password">Senha</label>
               <input
                 class="form-control py-4"
                 [ngClass]="{ 'is-invalid': wasSent && loginForm.controls.password.errors }"
                 id="password"
                 type="password"
-                placeholder="Enter password"
+                placeholder="Informe a senha"
                 formControlName="password">
                 <div *ngIf="wasSent && loginForm.controls.password.errors" class="invalid-feedback">
                   <div *ngIf="loginForm.controls.password.errors.required">
-                    Enter password
+                    Informe a senha
                   </div>
                 </div>
             </div>
@@ -44,18 +49,18 @@
                   id="rememeber_me"
                   type="checkbox"
                   formControlName="remember_me">
-                <label class="custom-control-label" for="rememeber_me">Remember password</label>
+                <label class="custom-control-label" for="rememeber_me">Lembrar senha</label>
               </div>
             </div>
             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-              <a class="small" routerLink="/auth/forgot-password">Forgot Password?</a>
+              <a class="small" routerLink="/auth/forgot-password">Esqueceu a senha?</a>
               <button type="submit" class="btn btn-primary">Login</button>
             </div>
           </form>
         </div>
         <div class="card-footer text-center">
             <div class="small">
-              <a routerLink="/auth/register">Need an account? Sign up!</a>
+              <a routerLink="/auth/register">Precisa de uma conta? Criar conta!</a>
             </div>
         </div>
       </div>

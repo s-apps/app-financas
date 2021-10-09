@@ -10,6 +10,8 @@ export class LoginFormComponent {
 
   @Input() loginForm!: FormGroup;
   @Input() wasSent: boolean = false;
+  @Input() messages: string[] = [];
   @Output() onSubmit = new EventEmitter();
+  @Output() onClearMessages = new EventEmitter();
 
 }
