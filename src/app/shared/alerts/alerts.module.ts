@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MessagesComponent } from './components/messages/messages.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 @NgModule({
   declarations: [
-    MessagesComponent
+    AlertsComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    MessagesComponent
+    AlertsComponent
   ]
 })
-export class MessagesModule { }
+export class AlertsModule { }

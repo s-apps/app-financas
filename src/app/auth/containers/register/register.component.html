@@ -1,5 +1,7 @@
 <app-register-form
   (onSubmit)="submit()"
+  (onClearAlert)="clearRegisterForm()"
   [wasSent]="wasSent"
+  [alert]="facade.alert"
   [registerForm]="registerForm">
 </app-register-form>

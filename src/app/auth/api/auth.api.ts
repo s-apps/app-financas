@@ -16,4 +16,12 @@ export class AuthApi {
     return this.http.post<User>('http://localhost:8000/api/auth/login', loginForm);
   }
 
+  register(registerForm: any): Observable<any>{
+    return this.http.post<User>('http://localhost:8000/api/auth/register', registerForm);
+  }
+
+  forgotPassword(forgotPasswordForm: any): Observable<any>{
+    return this.http.post<any>('http://localhost:8000/api/auth/forgot-password', forgotPasswordForm);
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthFacade } from '../../auth.facade';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +13,12 @@ export class RegisterComponent implements OnInit {
   public wasSent: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public facade: AuthFacade
   ) { }
 
   ngOnInit(): void {
+    this.facade.clearAlert();
     this.createForm();
   }
 
@@ -46,7 +49,13 @@ export class RegisterComponent implements OnInit {
   public submit(){
     this.wasSent = true;
     if (this.registerForm.invalid) return;
-    console.log(this.registerForm.value)
+    this.facade.register(this.registerForm.value);
+    this.wasSent = false;
+  }
+
+  public clearRegisterForm(){
+    if (this.facade.alert.class == 'alert-success') this.registerForm.reset();
+    this.facade.clearAlert();
   }
 
 }

@@ -1,7 +1,7 @@
 <app-login-form
   (onSubmit)="submit()"
-  (onClearMessages)="facade.clearMessages()"
+  (onClearAlert)="facade.clearAlert()"
   [wasSent]="wasSent"
-  [messages]="facade.messages"
+  [alert]="facade.alert"
   [loginForm]="loginForm">
 </app-login-form>

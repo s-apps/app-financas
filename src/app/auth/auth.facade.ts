@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { MessageService } from "../shared/messages/services/message.service";
+import { AlertService } from "../shared/alerts/services/alert.service";
 import { AuthApi } from "./api/auth.api";
 
 @Injectable({
@@ -11,27 +11,48 @@ export class AuthFacade {
   constructor(
     private api: AuthApi,
     private router: Router,
-    private messageService: MessageService
+    private alertService: AlertService
   ){}
 
-  get messages(){
-    return this.messageService.messages;
+  get alert(){
+    return this.alertService.alert;
   }
 
-  clearMessages(){
-    this.messageService.clear();
+  clearAlert(){
+    this.alertService.clear();
   }
 
   login(loginForm: any){
     return this.api.login(loginForm).subscribe({
-      next: (res) => {
+      next: () => {
         this.router.navigate(['/dashboard']);
       },
       error: error => {
-        console.error(error.error.message)
-        this.messageService.add(error.error.message);
+        this.alertService.add({ class: 'alert-danger', message: error.error.message });
       }
     });
+  }
+
+  async register(registerForm: any){
+    return this.api.register(registerForm).subscribe({
+      next: res => {
+        this.alertService.add({ class: 'alert-success', message: res.message });
+      },
+      error: error => {
+        this.alertService.add({ class: 'alert-danger', message: error.error.message });
+      }
+    })
+  }
+
+  forgotPassword(forgotPasswordForm: any){
+    return this.api.forgotPassword(forgotPasswordForm).subscribe({
+      next: res => {
+        this.alertService.add({ class: 'alert-success', message: res.message });
+      },
+      error: error => {
+        this.alertService.add({ class: 'alert-danger', message: error.error.message });
+      }
+    })
   }
 
 }

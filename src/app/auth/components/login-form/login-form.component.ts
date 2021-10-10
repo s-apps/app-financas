@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Alert } from 'src/app/shared/alerts/models/alert';
 
 @Component({
   selector: 'app-login-form',
@@ -10,8 +11,8 @@ export class LoginFormComponent {
 
   @Input() loginForm!: FormGroup;
   @Input() wasSent: boolean = false;
-  @Input() messages: string[] = [];
+  @Input() alert: Alert = { class: '', message: '' };
   @Output() onSubmit = new EventEmitter();
-  @Output() onClearMessages = new EventEmitter();
+  @Output() onClearAlert = new EventEmitter();
 
 }

@@ -11,7 +11,7 @@ import { ForgotPasswordFormComponent } from './components/forgot-password-form/f
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { InputFocusDirective } from '../shared/directives/input-focus/input-focus.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MessagesModule } from '../shared/messages/messages.module';
+import { AlertsModule } from '../shared/alerts/alerts.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { MessagesModule } from '../shared/messages/messages.module';
     AuthRoutingModule,
     ReactiveFormsModule,
     NgbModule,
-    MessagesModule
+    AlertsModule
   ]
 })
 export class AuthModule { }

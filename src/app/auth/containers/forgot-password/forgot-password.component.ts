@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthFacade } from '../../auth.facade';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,10 +13,12 @@ export class ForgotPasswordComponent implements OnInit {
   public wasSent: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public facade: AuthFacade
   ) { }
 
   ngOnInit(): void {
+    this.facade.clearAlert();
     this.createForm();
   }
 
@@ -28,7 +31,13 @@ export class ForgotPasswordComponent implements OnInit {
   public submit(){
     this.wasSent = true;
     if (this.forgotPasswordForm.invalid) return;
-    console.log(this.forgotPasswordForm.value)
+    this.facade.forgotPassword(this.forgotPasswordForm.value);
+    this.wasSent = false;
+  }
+
+  clearForgotPasswordForm(){
+    if (this.facade.alert.class == 'alert-success') this.forgotPasswordForm.reset();
+    this.facade.clearAlert();
   }
 
 }

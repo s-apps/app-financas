@@ -7,9 +7,9 @@
         </div>
         <div class="card-body">
           <app-messages
-            *ngIf="messages.length"
-            [messages]="messages"
-            (onClearMessages)="onClearMessages.emit()">
+            *ngIf="alert.message"
+            [alert]="alert"
+            (onClearAlert)="onClearAlert.emit()">
           </app-messages>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit.emit()" autocomplete="off">
             <div class="form-group">

@@ -7,7 +7,16 @@
           <small class="text-white">Preencha todos os campos</small>
         </div>
         <div class="card-body">
-          <form [formGroup]="registerForm" (ngSubmit)="onSubmit.emit()" autocomplete="off">
+          <app-messages
+            *ngIf="alert.message"
+            [alert]="alert"
+            (onClearAlert)="onClearAlert.emit()">
+          </app-messages>
+          <form
+            *ngIf="!alert.message || (alert.message && alert.class == 'alert-danger')"
+            [formGroup]="registerForm"
+            (ngSubmit)="onSubmit.emit()"
+            autocomplete="off">
             <div class="form-row">
               <div class="col-md-12">
                 <div class="form-group">
