@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthFacade } from '../../auth.facade';
+import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +14,11 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public facade: AuthFacade
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.facade.clearAlert();
+    this.authService.clearAlert();
     this.createForm();
   }
 
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     },
     {
       validator: this.passwordsMatch()
-    });
+    } as AbstractControlOptions); //Deprecated This API is not typesafe and can result in issues with Closure Compiler renaming. Use the FormBuilder#group overload with AbstractControlOptions instead.
   }
 
   private passwordsMatch() {
@@ -49,13 +49,13 @@ export class RegisterComponent implements OnInit {
   public submit(){
     this.wasSent = true;
     if (this.registerForm.invalid) return;
-    this.facade.register(this.registerForm.value);
+    this.authService.register(this.registerForm.value);
     this.wasSent = false;
   }
 
   public clearRegisterForm(){
-    if (this.facade.alert.class == 'alert-success') this.registerForm.reset();
-    this.facade.clearAlert();
+    if (this.authService.alert.class == 'alert-success') this.registerForm.reset();
+    this.authService.clearAlert();
   }
 
 }

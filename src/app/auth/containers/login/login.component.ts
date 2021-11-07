@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthFacade } from '../../auth.facade';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public facade: AuthFacade
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.facade.clearAlert();
+    this.authService.clearAlert();
     this.createForm();
   }
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   public submit(){
     this.wasSent = true;
     if (this.loginForm.invalid) return;
-    this.facade.login(this.loginForm.value);
+      this.authService.login(this.loginForm.value);
   }
 
 }
