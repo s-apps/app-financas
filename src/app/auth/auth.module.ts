@@ -10,7 +10,6 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { ForgotPasswordFormComponent } from './components/forgot-password-form/forgot-password-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { InputFocusDirective } from '../shared/directives/input-focus/input-focus.directive';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertsModule } from '../shared/alerts/alerts.module';
 
 @NgModule({
@@ -27,7 +26,6 @@ import { AlertsModule } from '../shared/alerts/alerts.module';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    NgbModule,
     AlertsModule
   ]
 })
